@@ -6,6 +6,7 @@ class Login extends Component {
 		super(props);
 
 		this.state = {
+			
 			email: '',
 			password: ''
 		};
@@ -13,6 +14,7 @@ class Login extends Component {
 		this.update = this.update.bind(this);
 
 		this.displayLogin = this.displayLogin.bind(this);
+
 	}
 
 	update(e) {
@@ -35,33 +37,40 @@ class Login extends Component {
 
 	render() {
 		return (
-			<div className="login">
+
+			<div className="login form">
 				<form onSubmit={this.displayLogin}>
 					<h2>Login</h2>
-					<div className="username">
-						<input
-							type="text"
-							placeholder="Username..."
-							value={this.state.email}
-							onChange={this.update}
-							name="email"
-						/>
+					<div className="input">
+						<div className="username input-box">
+							<input
+								type="text"
+								placeholder="Username..."
+								value={this.state.email}
+								onChange={this.update}
+								name="email"
+							/>
+						</div>
+
+						<div className="password input-box">
+							<input
+								type="password"
+								placeholder="Password..."
+								value={this.state.password}
+								onChange={this.update}
+								name="password"
+							/>
+						</div>
+						<div className="input-box">
+							<input type="submit" value="Login" />
+						</div>
 					</div>
 
-					<div className="password">
-						<input
-							type="password"
-							placeholder="Password..."
-							value={this.state.password}
-							onChange={this.update}
-							name="password"
-						/>
-					</div>
-
-					<input type="submit" value="Login" />
 				</form>
+				<div className="account">
+					<Link className="login-Here" to="/register">Create an Account</Link>
+				</div>
 
-				<Link to="/register">Create an account</Link>
 			</div>
 		);
 	}

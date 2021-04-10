@@ -13,7 +13,7 @@ class Register extends Component {
 
 		this.update = this.update.bind(this);
 
-		this.displayLogin = this.displayLogin.bind(this);
+		this.displayLogin = this.displayRegister.bind(this);
 	}
 
 	update(e) {
@@ -24,7 +24,7 @@ class Register extends Component {
 		});
 	}
 
-	displayLogin(e) {
+	displayRegister(e) {
 		e.preventDefault();
 		console.log('You have successfully registered');
 		console.log(this.state);
@@ -37,48 +37,54 @@ class Register extends Component {
 
 	render() {
 		return (
-			<div className="register">
-				<form onSubmit={this.displayLogin}>
+			<div className="register form">
+				<form onSubmit={this.displayRegister}>
 					<h2>Register</h2>
+					<div className="input">
+						<div className="name input-box">
+							<input
+								type="text"
+								placeholder="Full Name"
+								name="fullname"
+								value={this.state.fullname}
+								onChange={this.update}
+							/>
+						</div>
 
-					<div className="name">
-						<input
-							type="text"
-							placeholder="Full Name"
-							name="fullname"
-							value={this.state.fullname}
-							onChange={this.update}
-						/>
+						<div className="email input-box">
+							<input
+								type="text"
+								placeholder="Enter your email"
+								name="email"
+								value={this.state.email}
+								onChange={this.update}
+							/>
+						</div>
+
+						<div className="pasword input-box">
+							<input
+								type="password"
+								placeholder="Password"
+								name="password"
+								value={this.state.password}
+								onChange={this.update}
+							/>
+						</div>
+
+						<div className="password input-box">
+							<input type="password" placeholder="Confirm Password" name="password1" />
+						</div>
+						<div className="input-box">
+							<input type="submit" value="Login" />
+						</div>
+
 					</div>
 
-					<div className="email">
-						<input
-							type="text"
-							placeholder="Enter your email"
-							name="email"
-							value={this.state.email}
-							onChange={this.update}
-						/>
-					</div>
-
-					<div className="pasword">
-						<input
-							type="password"
-							placeholder="Password"
-							name="password"
-							value={this.state.password}
-							onChange={this.update}
-						/>
-					</div>
-
-					<div className="password">
-						<input type="password" placeholder="Confirm Password" name="password1" />
-					</div>
-
-					<input type="submit" value="Login" />
 				</form>
+				<div className="account">
+					<span>do you have account ? </span><Link className="login-Here" to="/">Login Here</Link>
+				</div>
 
-				<Link to="/">Login Here</Link>
 			</div>
 		);
 	}
